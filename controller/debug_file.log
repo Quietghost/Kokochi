@@ -1,0 +1,5 @@
+getCollCurrentCount: FEHLER:  Relation »player_41_collCurrent« existiert nicht
+LINE 1: SELECT * FROM "player_41_collCurrent"
+                      ^getCollCurrentEmotions: FEHLER:  keine Berechtigung für Relation collplayers_31_41getCollCurrentEmotions: FEHLER:  keine Berechtigung für Relation collplayers_31_41getCollCurrentEmotions: FEHLER:  keine Berechtigung für Relation collplayers_31_41getCollCurrentEmotions: FEHLER:  keine Berechtigung für Relation collplayers_31_41getCollPlayersHistory: FEHLER:  Syntaxfehler bei »ORDER«
+LINE 4: ...yer_id AND A2.emotion_id = A3.id AND NOT A1.id =  ORDER BY e...
+                                                             ^

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<link href="lib/jquery-mobile/jquery.mobile-1.0.1.min.css" rel="stylesheet" type="text/css"/>
+<link href="view/kokochi.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDI2Gnd73MZY4Rqgn8k3XjSrnFB6jDAII0&sensor=false"></script>
+
+<script src="lib/jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
+
+<script src="lib/markerwithlabel.js" type="text/javascript"></script>
+<script src="lib/oms.min.js" type="text/javascript"></script>
+
+<script src="controller/getTextDescriptions.js" type="text/javascript"></script>
+
+<script src="model/sendXMLHttpRequest.js" type="text/javascript"></script>
+
+<script src="view/buildCheckboxes.js" type="text/javascript"></script>
+<script src="view/buildCherryBlossomTree.js" type="text/javascript"></script>
+<script src="view/buildBlockedPlayerList.js" type="text/javascript"></script>
+<script src="view/buildNewUserPage.js" type="text/javascript"></script>
+<script src="view/buildStartPage.js" type="text/javascript"></script>
+<script src="view/buildCollPageButtons.js" type="text/javascript"></script>
+<script src="view/buildPlayerProfile.js" type="text/javascript"></script>
+<script src="view/buildPlayerList.js" type="text/javascript"></script>
+<script src="view/buildTimeLine.js" type="text/javascript"></script>
+<script src="view/buildTimeLineMap.js" type="text/javascript"></script>
+<script src="view/buildScorePage.js" type="text/javascript"></script>
+<script src="view/buildCollPlayerList.js" type="text/javascript"></script>
+<script src="view/buildEndPage.js" type="text/javascript"></script>
+<script src="view/buildMyEmotionsOverview.js" type="text/javascript"></script>
+<script src="view/buildChargePowerPage.js" type="text/javascript"></script>
+<script src="view/buildCredits.js" type="text/javascript"></script>
+<script src="view/buildUsableEmotionsList.js" type="text/javascript"></script>
+<script src="view/buildPlayerRankingList.js" type="text/javascript"></script>
+<script src="view/buildFlowerPointsScore.js" type="text/javascript"></script>
+<script src="view/buildCollFlowers.js" type="text/javascript"></script>
+<script src="view/buildFlowersStartPage.js" type="text/javascript"></script>
+<script src="view/buildLocalizationStatus.js" type="text/javascript"></script>
+<script src="view/introNavigation.js" type="text/javascript"></script>
+<script src="view/emoStated.js" type="text/javascript"></script>
+<script src="view/buildGameStatistics.js" type="text/javascript"></script>
+
+<script src="util/dateTimeFormater.js" type="text/javascript"></script>
+<script src="util/removeDuplicates.js" type="text/javascript"></script>
+<script src="util/showToast.js" type="text/javascript"></script>
+<script src="util/array_util.js" type="text/javascript"></script>
+<script src="util/preloadImages.js" type="text/javascript"></script>
+
+<script src="lib/jquery-mobile/jquery.mobile-1.0.1.min.js" type="text/javascript"></script>
+<script>
+
+//Chrome bug: http://stackoverflow.com/questions/7825448/webkit-issues-with-event-layerx-and-event-layery
+(function(){
+    // remove layerX and layerY
+    var all = $.event.props,
+        len = all.length,
+        res = [];
+    while (len--) {
+      var el = all[len];
+      if (el != 'layerX' && el != 'layerY') res.push(el);
+    }
+    $.event.props = res;
+}());
+
+//----------------------------
+emoTable = "emotions";
+language = "eng";
+meID = 1;
+lat=34.734136;
+lng=135.734814;
+
+map = null;
+oms = null;
+center = new google.maps.LatLng(
+				  lat,
+				  lng);
+
+function initializeMap(){
+
+	var myOptions = {
+		zoom: 16,
+		center: center,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	oms = new OverlappingMarkerSpiderfier(map, {markersWontMove: true, markersWontHide: true, keepSpiderfied: true});
+}
+
+</script>
+<title>Map</title>
+</head>
+<body onLoad="getTextDescriptions(); initializeMap()">
+
+<div data-role="page" id="map-page">
+<script>
+$('#load').live("click", function() {
+	deleteOverlays2();
+	$.mobile.showPageLoadingMsg("a", "Data loading ...");
+
+	var game = $('#select-choice-1').val();
+	var paramsMap = "lat="+ lat+"&lng="+lng+"&game=" + game + "&emo_table="+emoTable;
+	ajaxCall("createTimelineMapMarkerOnlyAllAnalysis",paramsMap);
+
+	var paramsStatistics = "game=" + game + "&emo_table="+emoTable;
+	ajaxCall("createGameStatistics",paramsStatistics);
+
+});
+//Pageload
+$('#map-page').live("pageshow", function() {
+
+});
+</script>
+	<div data-role="header">
+    	<h1>Kokochi: Game Statistics </h1>
+	</div>
+	<div data-role="content">
+    <fieldset class="ui-grid-a">
+		<div class="ui-block-a"><div id="map_canvas" style="width:95%; height:600px; padding:5px;"></div></div>
+        <div class="ui-block-b">
+           <label for="select-choice-1" class="select">Game:</label>
+           <select name="select-choice-1" id="select-choice-1">
+              <!--<option value="test">Test</option>-->
+              <!--<option value="ccil">NEC CCIL</option>-->
+              <option value="naist">NAIST</option>
+           </select>
+           <input type="button" value="Load Game" id="load" data-inline="true">
+           </p>
+           <div data-role="collapsible-set" data-mini="true">
+               <span id="gamestats"></span>
+               <span id="emotionstats"></span>
+               <span id="playerstats"></span>
+               <span id="timeline"></span>
+               <span id="coll_timeline"></span>
+               <span id="hug_timeline"></span>
+           </div>
+    	</div>
+    </fieldset>
+	</div>
+</div>
+
+</body>
+</html>

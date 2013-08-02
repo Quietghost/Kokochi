@@ -1,0 +1,241 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Remove background seal */
+.ui-content {
+	background:none;
+}
+/* Home page banner */
+h2#banner-1 {
+	background:transparent url(../view/img/iphone/3g/cherry_blossom_1.jpg) no-repeat left 10px;
+	width:320px;
+	height:480px;
+	margin:-10px auto -475px auto;
+	text-indent:-9999px;
+}
+h2#banner-2 {
+	background:transparent url(../view/img/iphone/3g/cherry_blossom_2.jpg) no-repeat left 10px;
+	width:320px;
+	height:480px;
+	margin:-10px auto -475px auto;
+	text-indent:-9999px;
+}
+h2#banner-3 {
+	background:transparent url(../view/img/iphone/3g/cherry_blossom_3.jpg) no-repeat left 10px;
+	width:320px;
+	height:480px;
+	margin:-10px auto -475px auto;
+	text-indent:-9999px;
+}
+h2#banner-4 {
+	background:transparent url(../view/img/iphone/3g/cherry_blossom_4.jpg) no-repeat left 10px;
+	width:320px;
+	height:480px;
+	margin:-10px auto -475px auto;
+	text-indent:-9999px;
+}
+
+.start-flowers{
+}
+
+/* Home page banner */
+h2#banner-end-of-game {
+	background:transparent url(../view/img/iphone/3g/cherry_blossom_4.jpg) no-repeat left 10px;
+	width:320px;
+	height:480px;
+	margin:-10px auto -475px auto;
+	text-indent:-9999px;
+}
+
+/* Remove reduntant extra top padding - don't put h2's in front of ul.listview */
+h2 {
+	margin:0;
+	font-size:20px;
+}
+
+h1#map-text {
+	font-size:12px;
+	margin-top:10px;
+	margin-bottom:15px;
+}
+
+.header-text {
+	margin-top:10px;
+	margin-bottom:5px;
+	margin-left:10px;
+	
+}
+.header-sub-text {
+	font-size: 10px;
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-left:10px;
+}
+
+.footer-text {
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-left:10px;
+}
+
+.comic-image {
+    width:282px;
+    border: 3px solid white;
+	margin-top:-10px;
+
+}
+
+.skip-button {
+	margin-top:-8px;
+}
+
+.outer {
+    position: relative;
+    display: table;
+    vertical-align: middle;
+	background-color:white;
+	height: 100px;
+	width:100%;
+    border: 2px solid black;
+	
+}
+
+.inner {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+	text-align:justify; 
+	padding: 5px;
+	
+}
+
+.ui-page#intro {
+	background: #FFFFFF;
+}
+
+.ui-page#start {
+	background: #019245;
+}
+
+.ui-page#end-page {
+	background: #019245;
+}
+
+.player-profile-entry
+ {
+	background: #D8D8D8;
+	margin: 2px;
+	padding: 5px;
+}
+
+.playerprofile-last-emotion,
+.playerprofile-emocounter,
+.playerprofile-hugscounter,
+.playerprofile-hugs,
+.playerprofile-score,
+.playerprofile-collaboration
+ {
+    text-align:center;
+}
+
+.playerprofile-sprite
+ {
+	align:center ;
+}
+
+.cherry-tree-text{
+	margin-top:2px;
+	margin-left:-10px;
+	font-size: small;
+	font-weight: bold;
+	text-align: center;
+}
+
+.cherry-tree{
+	margin-top:-10px;
+	margin-left:-10px;
+}
+
+.end-of-game-status{
+	margin-top:70px;
+	margin-left:20px;
+	/*background: #FFFFFF;*/
+	font-size: small;
+	font-weight: bold;
+	text-align: center;
+}
+
+.end-of-game-status-text{
+	background: #F8E0F7;
+	border-radius: 10px;
+	padding: 4px;
+}
+
+.credits-text{
+	font-size: small;
+	font-weight: bold;
+	padding: 4px;
+}
+
+.tooltip {
+   border: 1px solid       #459216;
+   color:               #333333;
+   text-shadow: 0 1px 0    #fff;
+   background:          #FDBDBD;
+   background-image: -moz-linear-gradient(top, 
+                     #fff, 
+                     #FDBDBD);
+   background-image: -webkit-gradient(linear,left top,left bottom,
+      color-stop(0,     #fff),
+      color-stop(1,     #FDBDBD));
+   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#FDBDBD')";
+}
+
+img.floatLeft { 
+    float: left; 
+    margin: 4px;
+}
+
+.map-labels-hug {
+	color: black;
+    background-color: yellow;
+    font-family: "Century Schoolbook", "Times", sans-serif;
+    font-size: 10px;
+    text-align: center;
+    width: 50px;
+    white-space: nowrap;
+	padding: 2px;
+}
+
+.map-labels-emo {
+	color: black;
+    background-color: #66FFCC;
+    font-family: "Century Schoolbook", "Times", sans-serif;
+    font-size: 10px;
+	font-weight:bold;
+    text-align: center;
+    width: 80px;
+    white-space: nowrap;
+	padding: 2px;
+}
+.map-labels-coll {
+	color: black;
+    background-color: #66FF33;
+    font-family: "Century Schoolbook", "Times", sans-serif;
+    font-size: 10px;
+	font-weight:bold;
+    text-align: center;
+    width: 50px;
+    white-space: wrap;
+	padding: 2px;
+}
+.map-labels-me {
+	color: black;
+    background-color: white;
+    font-family: "Century Schoolbook", "Times", sans-serif;
+    font-size: 10px;
+    text-align: center;
+    width: 50px;
+    white-space: nowrap;
+	padding: 2px;
+}
